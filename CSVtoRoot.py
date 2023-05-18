@@ -5,7 +5,7 @@ Author: U. Guney Tok
 Description: Dark current of the PMTs from ZDC's RPD detectors.
 
 Script usage: python CSVtoRoot.py --region
-		e.g   python CSVtoRoot.py Plus
+        e.g   python CSVtoRoot.py Plus
 '''
 
 import ROOT
