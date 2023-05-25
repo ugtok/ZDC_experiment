@@ -4,49 +4,46 @@ Author: U. Guney Tok
 
 Description: Dark current of the PMTs from ZDC's RPD detectors.
 
-Script usage: python CSVtoRoot.py --region
+Script usage: "python CSVtoRoot.py --region"
         e.g   python CSVtoRoot.py Plus
 '''
+#fileNames_Minus=['230524_A1_Ch1.csv']
+fileNames_Minus=["ZDC_Minus/ZDCM_waveform/230524_A1_Ch1.csv","ZDC_Minus/ZDCM_waveform/230524_A1_Ch2.csv","ZDC_Minus/ZDCM_waveform/230524_A1_Ch3.csv","ZDC_Minus/ZDCM_waveform/230524_A1_Ch4.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch5.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch6.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch7.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch8.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch9.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch10.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch11.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch12.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch13.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch14.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch15.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch16.csv"]
 
-import ROOT
-import sys
-import os
+fileNames_Plus=["ZDC_Plus/ZDCP_waveform/230524_D1_Ch1.csv","ZDC_Plus/ZDCP_waveform/230524_D1_Ch2.csv","ZDC_Plus/ZDCP_waveform/230524_D1_Ch3.csv","ZDC_Plus/ZDCP_waveform/230524_D1_Ch4.csv","ZDC_Plus/ZDCP_waveform/230524_D2_Ch5.csv","ZDC_Plus/ZDCP_waveform/230524_D2_Ch6.csv","ZDC_Plus/ZDCP_waveform/230524_D2_Ch7.csv","ZDC_Plus/ZDCP_waveform/230524_D2_Ch8.csv","ZDC_Plus/ZDCP_waveform/230524_C3_Ch9.csv","ZDC_Plus/ZDCP_waveform/230524_C3_Ch10.csv","ZDC_Plus/ZDCP_waveform/230524_C3_Ch11.csv","ZDC_Plus/ZDCP_waveform/230524_C3_Ch12.csv","ZDC_Plus/ZDCP_waveform/230524_C4_Ch13.csv","ZDC_Plus/ZDCP_waveform/230524_C4_Ch14.csv","ZDC_Plus/ZDCP_waveform/230524_C4_Ch15.csv","ZDC_Plus/ZDCP_waveform/230524_C4_Ch16.csv"]
 
-fileNames_Minus=["ZDC_Minus/RPD_M_csvFiles/230512_A1_Ch1.csv","ZDC_Minus/RPD_M_csvFiles/230512_A1_Ch2.csv","ZDC_Minus/RPD_M_csvFiles/230512_A1_Ch3.csv","ZDC_Minus/RPD_M_csvFiles/230512_A1_Ch4.csv","ZDC_Minus/RPD_M_csvFiles/230512_A2_Ch5.csv","ZDC_Minus/RPD_M_csvFiles/230512_A2_Ch6.csv","ZDC_Minus/RPD_M_csvFiles/230512_A2_Ch7.csv","ZDC_Minus/RPD_M_csvFiles/230512_A2_Ch8.csv","ZDC_Minus/RPD_M_csvFiles/230512_B3_Ch9.csv","ZDC_Minus/RPD_M_csvFiles/230512_B3_Ch10.csv","ZDC_Minus/RPD_M_csvFiles/230512_B3_Ch11.csv","ZDC_Minus/RPD_M_csvFiles/230512_B3_Ch12.csv","ZDC_Minus/RPD_M_csvFiles/230512_B4_Ch13.csv","ZDC_Minus/RPD_M_csvFiles/230512_B4_Ch14.csv","ZDC_Minus/RPD_M_csvFiles/230512_B4_Ch15.csv","ZDC_Minus/RPD_M_csvFiles/230512_B4_Ch16.csv"]
-
-fileNames_Plus=["ZDC_Plus/RPD_P_csvFiles/230511_D1_Ch1.csv","ZDC_Plus/RPD_P_csvFiles/230511_D1_Ch2.csv","ZDC_Plus/RPD_P_csvFiles/230511_D1_Ch3.csv","ZDC_Plus/RPD_P_csvFiles/230511_D1_Ch4.csv","ZDC_Plus/RPD_P_csvFiles/230511_D2_Ch5.csv","ZDC_Plus/RPD_P_csvFiles/230511_D2_Ch6.csv","ZDC_Plus/RPD_P_csvFiles/230511_D2_Ch7.csv","ZDC_Plus/RPD_P_csvFiles/230511_D2_Ch8.csv","ZDC_Plus/RPD_P_csvFiles/230511_C3_Ch9.csv","ZDC_Plus/RPD_P_csvFiles/230511_C3_Ch10.csv","ZDC_Plus/RPD_P_csvFiles/230511_C3_Ch11.csv","ZDC_Plus/RPD_P_csvFiles/230511_C3_Ch12.csv","ZDC_Plus/RPD_P_csvFiles/230512_C4_CH13_HV11ON.csv","ZDC_Plus/RPD_P_csvFiles/230512_C4_CH14_HV11ON.csv","ZDC_Plus/RPD_P_csvFiles/230512_C4_CH15_HV11ON.csv","ZDC_Plus/RPD_P_csvFiles/230512_C4_CH16_HV110N.csv"]
+fileNames_Test = ["ZDC_Plus/ZDCP_waveform/230524_C4_Ch13.csv","ZDC_Plus/ZDCP_waveform/230524_C4_Ch14.csv"]
 
 region = sys.argv[1]
 
-#fileNames=["ZDC_Minus/RPD_M_csvFiles/230512_A2_Ch7.csv"]
-
 snapshotOptions = ROOT.RDF.RSnapshotOptions()
 snapshotOptions.fMode  = "RECREATE"
-snapshotOptions.fOverwriteIfExists = True
+#snapshotOptions.fOverwriteIfExists = True
 
 count = 0
 
 if region == "Plus":
-	fileNames = fileNames_Plus
+        fileNames = fileNames_Plus
 elif region == "Minus":
-	fileNames = fileNames_Minus
+        fileNames = fileNames_Minus
+elif region == "Test":
+        fileNames = fileNames_Test
 
 for fileName in fileNames:
-	count = count +1
-	
-	df = ROOT.RDF.MakeCsvDataFrame(fileName)
+        count = count +1
 
-	#rootfileName = "RPDM_Channel_%s.root"%str(count)
-	rootfileName = "RPD_%s.root"%region
-	treeName = "Channel_%s"%str(count)
+        df = ROOT.RDF.MakeCsvDataFrame(fileName)
 
-	histo1D = df.Histo1D(("dark current","ZDC_RPD %s; Time;Voltage"%region,250,-125,125),"Voltage")
+        rootfileName = "ZDC_%s/RPD_%s_rootFiles/RPD_%s_Channel_%s.root"%(region,region,region,count)
+        treeName = "Channel_%s"%str(count)
 
-	df.Snapshot(treeName,rootfileName,"",snapshotOptions)
-	f = ROOT.TFile.Open(rootfileName)
-	c = ROOT.TCanvas()
-	#c.SetLogx()
-	c.SetLogy()
-	histo1D.Draw()
-	c.SaveAs("ZDC_%s/Histograms/RPD%s_Channel_%s.png"%(region,region,str(count)))
+        histo1D = df.Histo1D(("dark current","RPD %s, Channel_%s; Time;Voltage"%(region,count),150,-0.001,0.001),"Voltage")
 
+        histo1D.Fit("gaus")
+        df.Snapshot(treeName,rootfileName,"",snapshotOptions)
+        f = ROOT.TFile.Open(rootfileName)
+        c = ROOT.TCanvas()
+        #c.SetLogx()
+        #c.SetLogy()
+        histo1D.Draw("pl")
+        c.SaveAs("ZDC_%s/Histograms/RPD%s_Channel_%s.png"%(region,region,str(count)))
