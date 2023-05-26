@@ -11,7 +11,7 @@ import ROOT
 import sys
 import os
 
-#Data from scope collected as .csv files with time and voltage for both region plus and minus.
+#Data from scope collected as .csv files with time and voltage informations for both region 'plus' and 'minus' side of the ZDC.
 
 fileNames_Minus=["ZDC_Minus/ZDCM_waveform/230524_A1_Ch1.csv","ZDC_Minus/ZDCM_waveform/230524_A1_Ch2.csv","ZDC_Minus/ZDCM_waveform/230524_A1_Ch3.csv","ZDC_Minus/ZDCM_waveform/230524_A1_Ch4.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch5.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch6.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch7.csv","ZDC_Minus/ZDCM_waveform/230524_A2_Ch8.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch9.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch10.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch11.csv","ZDC_Minus/ZDCM_waveform/230524_B3_Ch12.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch13.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch14.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch15.csv","ZDC_Minus/ZDCM_waveform/230524_B4_Ch16.csv"]
 
